@@ -2,8 +2,19 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <!--link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap-grid.css"-->
+  <style>
+  * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -box-sizing: border-box; }
+  body { font-family: "Trebuchet MS", Helvetica, sans-serif; background: black; }
+  input { background: grey; font-size: 18px; }
+  .col-md-push-3 { left: 25%; }
+  .col-md-push-2 { left: 16.66666667%; }
+  .col-md-12 { float: left; width: 100%; }
+  .col-md-8 { float: left; width: 66.66666667%; }
+  .col-md-6 { float: left; width: 50%; }
+  .col-md-4 { float: left; width: 33.33333333%; }
+  </style>
 </head>
 
 <body>
@@ -138,6 +149,18 @@
     </div>
     <div id="footer" class="col-md-12">Thanks for visiting! &copy; 2014 Udacity</div>
   </div>
+  <script>
+  var cb = function() {
+    var l = document.createElement('link'); l.rel = 'stylesheet';
+    l.href = 'css/style.css';
+    var l2 = document.createElement('link'); l2.rel = 'stylesheet';
+    l2.href = 'css/bootstrap-grid.css';
+    var h = document.getElementsByTagName('head')[0];
+    h.parentNode.insertBefore(l, h);
+    h.parentNode.insertBefore(l2, h);
+  };
+  window.addEventListener('load', cb);
+  </script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 
