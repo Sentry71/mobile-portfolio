@@ -158,12 +158,9 @@
   <script>
   var cb = function() {
     var l = document.createElement('link'); l.rel = 'stylesheet';
-    l.href = 'css/style.css';
-    var l2 = document.createElement('link'); l2.rel = 'stylesheet';
-    l2.href = 'css/bootstrap-grid.css';
+    l.href = 'css/bootstrap-grid.css';
     var h = document.getElementsByTagName('head')[0];
     h.parentNode.insertBefore(l, h);
-    h.parentNode.insertBefore(l2, h);
   };
   window.addEventListener('load', cb);
   </script>
