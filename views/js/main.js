@@ -437,17 +437,19 @@ var resizePizzas = function(size) {
   }
 
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
+  // Optimization: pulled sizeSwitcher() function outside of loop
   function determineDx (elem, size) {
     var oldwidth = elem.offsetWidth;
     var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
     var oldsize = oldwidth / windowwidth;
     var newsize = sizeSwitcher(size);
     var dx = (newsize - oldsize) * windowwidth;
-
     return dx;
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  // Optimization: moved dx outside the for loop, as it does not need recalculated
+  // (value stays the same for all iterations)
   function changePizzaSizes(size) {
     var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[0], size);
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
@@ -468,6 +470,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// Optimization: moved pizzasDiv outside the for loop, as the value is constant.
 var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -497,6 +500,8 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// Optimization: created scrTop to pull static information once, instead of
+// recalculating in the for loop
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
