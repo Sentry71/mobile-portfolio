@@ -10,6 +10,7 @@
     form { display: inline-block; }
     .centered { text-align: center; }
     #pizzaSize { font-weight: 800; }
+    .mover { position: fixed; width: 256px; z-index: -1; }
     .randomPizzaContainer { float: left; display: flex; }
     .randomPizzaContainer:after { content: ""; display: table; clear:both; }
     .container { background-color: rgba(240, 60, 60, 0.8); }
@@ -155,16 +156,15 @@
     <div id="footer" class="col-md-12">Thanks for visiting! &copy; 2014 Udacity</div>
   </div>
   <script>
-    var cb = function() {
-      var l = document.createElement('link');
-      l.rel = 'stylesheet';
-      l.href = 'css/bootstrap-grid.min.css';
-      var h = document.getElementsByTagName('head')[0];
-      h.parentNode.insertBefore(l, h);
-    };
-    window.addEventListener('load', cb);
+  var cb = function() {
+    var l = document.createElement('link'); l.rel = 'stylesheet';
+    l.href = 'css/bootstrap-grid.css';
+    var h = document.getElementsByTagName('head')[0];
+    h.parentNode.insertBefore(l, h);
+  };
+  window.addEventListener('load', cb);
   </script>
-  <script type="text/javascript" src="js/main.min.js"></script>
+  <script async type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>
