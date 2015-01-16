@@ -1,65 +1,40 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+For this project, a web portfolio was provided, which requires some modification to work optimally. The objective of this project is to optimize that portfolio, using skills obtained from the [Website Perfomance Optimization](https://www.udacity.com/course/ud884 "Udacity Course UD884" ) course on Udacity.
 
-To get started, check out the repository, inspect the code,
+### How to Test
+1. For the PageSpeed Insights Score, open the [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) link and copy the URL to be tested into the space provided, and click the Analyze button.
+  * URL: http://sentry71.github.io/mobile-portfolio/index.html
+2. For the Frames Per Second reading, open the below URL in Chrome. Navigate to the DevTools page (menu > View > Developer > Developer Tools). Click on the Timeline tab. Record a trace, and verify the Frames mode is on (looks like a set of vertical bars).
+  * URL: http://sentry71.github.io/mobile-portfolio/views/pizza.html
 
-### Getting started
 
-Some useful tips to help you get started:
+### Steps Taken to Improve PageSpeed Score
+* Moved required CSS for first render into a style tag on the HTML page
+* Optimized images using [ImageOptim](https://imageoptim.com) for Mac
+* Added "async" attribute on the JavaScript script tags, to load data asynchronously
+* These modifications allowed the Google PageSpeed Insights scores to be above 90 on both desktop and mobile
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+### Steps Taken to Improve Frames per Second
+* Moved entire style.css file into HTML page for first render
+* Minified CSS and JavaScript files (both regular and minfied versions are in their respective /views/css and /views/js folders)
+* Optimized images using [ImageOptim](https://imageoptim.com) for Mac
+* Made several changes to main.js, in order to optimize frame rate
+  * Moved sizeSwitcher() function (line 426) outside of the function it was defined in (line 441)
+  * Moved static values outside the "for" loop in changePizzaSizes() function (line 455-457), the "pizza append on page load" function (line 476) and updatePositions() function (line 511-512)
+* By making these modifications, the frame rate should be consistently above 60fps when measured using Chrome DevTools
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+All final code can be viewed at the repository where this README is located.
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
-
-### Sample Portfolios
-
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
+#### References Used
+* igvita.com - Ilya Grigorik
+https://www.igvita.com/2012/09/12/web-fonts-performance-making-pretty-fast/
+* essential CSS in style tag
+https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
+* ImageOptim - image optimization tool
+https://imageoptim.com
+* CSS minifier
+http://csscompressor.com
+* JS minifier
+http://jscompress.com
